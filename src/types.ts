@@ -1,5 +1,29 @@
 export type AuthResponse = { token: string; username: string }
-export type UserResult = { username: string; online: boolean }
+
+export type Profile = {
+  username: string
+  state: string | null
+  avatarUrl: string | null
+}
+
+export type UserResult = {
+  username: string
+  online: boolean
+  state: string | null
+  avatarUrl: string | null
+}
+
+export type CommunityPost = {
+  id: number
+  username: string
+  state: string | null
+  avatarUrl: string | null
+  text: string | null
+  mediaUrl: string | null
+  mediaKind: 'image' | 'video' | null
+  createdAt: string
+  online: boolean
+}
 
 export type ChatMessage = {
   id: string

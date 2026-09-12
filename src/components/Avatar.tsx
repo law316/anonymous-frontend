@@ -4,9 +4,24 @@ function hash(text: string) {
   return Math.abs(h)
 }
 
-export function Avatar({ username, online, size = 'md' }: { username: string; online?: boolean; size?: 'sm' | 'md' | 'lg' }) {
+export function Avatar({
+  username,
+  online,
+  imageUrl,
+  size = 'md'
+}: {
+  username: string
+  online?: boolean
+  imageUrl?: string | null
+  size?: 'sm' | 'md' | 'lg'
+}) {
   const initials = username.slice(0, 2).toUpperCase()
+
   return <div className={`avatar avatar--${size} avatar-tone-${hash(username) % 6}`}>
-    <span>{initials}</span>{online !== undefined && <i className={online ? 'online' : ''} />}
+    {imageUrl
+      ? <img src={imageUrl} alt="" draggable={false}/>
+      : <span>{initials}</span>
+    }
+    {online !== undefined && <i className={online ? 'online' : ''} />}
   </div>
 }
